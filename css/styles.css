@@ -6,17 +6,17 @@ p{
 }
 
 /* use class selector to define style for elemts*/
-.mun_oma{
-    background-color: aquamarine;
-}
 
 .fancy{
     color: blue;
     border: 2px;
-    background-color: aquamarine;
+    background-color: red;
     border-radius: 8px;
 }
 
+.mun_oma{
+    background-color: aquamarine;
+}
 /* use id selector to define styles */
 #joku_tyyli{
     margin: 100px;
