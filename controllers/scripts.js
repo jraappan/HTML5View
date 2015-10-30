@@ -18,11 +18,23 @@ $(document).ready(function() {
     };
     $.ajax(setting).done(function(data){
         console.log(data);
+        console.log(Object.keys(data.rows[0]));
+        if(data.rows.length > 0 )
+        {
+            var headers = Object.keys(data.rows[0]);
+            var row =$("<tr></tr>");
+            for(var i=1; i< headers.length; i++){
+                $("<th>" + headers[i] + "</th>").appendTo(row);
+            }
+        }
+        $(row).appendTo("thead");
         for(i=0; i<data.rows.length; i++){
-           var html =  "<tr>" +
+
+            var html =  "<tr>" +
                         "<td>" + data.rows[i].name + "</td>" +
                         "<td>" + data.rows[i].address + "</td>" +
                         "<td>" + data.rows[i].age + "</td>" +
+                        "<td>" + data.rows[i].email + "</td>" +
                     "</tr>";
             $(html).appendTo("tbody");
                
