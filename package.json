@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/jraappan/HTML5View.git"
   },
-  "author": "Jukka Raappana",
+  "author": "JR",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jraappan/HTML5View/issues"
   },
   "homepage": "https://github.com/jraappan/HTML5View#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "mongoose": "^4.2.3"
   }
 }
