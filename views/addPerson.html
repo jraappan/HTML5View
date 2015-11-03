@@ -1,9 +1,30 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <title>Add person</title>
+        <link href="/css/styles.css" type="text/css" rel="stylesheet"/>
+        <link href="/css/bootstrap.min.css" type"text/css" rel="stylesheet"/>
+        <link href="/css/bootstrap-theme.min.css" type"text/css"
     </head>
     <body>
         <p> Add person </p>
+        <form method = "post" enctype="application/json" action="/persons" role="form">
+          <div class="form-group">
+            <label for="name">Nimi:</label>
+            <input type="text" class="form-control" name="name" placeholder="Anna etu- ja sukunimi" >
+          </div>
+          <div class="form-group">
+            <label for="address">Osoite:</label>
+            <input type="text" class="form-control" name="address" placeholder="Anna osoite" >
+          </div>
+          <div class="form-group">
+            <label for="age">Ikä:</label>
+            <input type="text" class="form-control" name="age" placeholder="Anna ikäsi">
+          </div>
+            <!--input type="submit" value="Send"/!-->
+          <button type="submit" class="btn btn-default">Talleta</button>
+        </form>
     </body>
 </html>
       

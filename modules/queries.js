@@ -13,3 +13,11 @@ exports.getAllPersons = function(req,res){
         }
     });
 }
+
+exports.saveNewPerson = function(req,res){
+    
+    var personTemp = new db.Person(req.body);
+    personTemp.save(function(err,ok){
+        res.send("Dabase action done");
+    });
+}

@@ -6,7 +6,7 @@ router.get('/',function(req,res){
     db.getAllPersons(req,res);
 });
 router.post('/',function(req,res){
-    
+    db.saveNewPerson(req,res);
 });
 router.put('/',function(req,res){
     
