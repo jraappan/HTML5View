@@ -21,3 +21,28 @@ exports.saveNewPerson = function(req,res){
         res.send("Dabase action done");
     });
 }
+
+exports.deletePerson = function(req,res){
+    var id = req.params.id.split("=")[1];
+    console.log(id);
+    db.Person.remove({_id:id},function(err){
+        if(err){
+            res.send(err.message);
+        }
+        else{
+            res.send("Delete ok");
+        }
+    });
+}
+
+exports.updatePerson = function(req,res){
+    
+    var updateData = {
+        name:req.body.name,
+        address:req.body.address,
+        age:req.body.age
+    }
+    db.Person.update({_id:req.body.id},updateData,function(err){
+        res.send({data:"ok"}); // hox! return dataType json
+    });
+}
