@@ -79,7 +79,7 @@ function buildModifyUI(person_data){
         $.ajax({
             method:"PUT",
             url:'http://localhost:3000/persons',
-            //dataType:'json',
+            dataType:'json',
             data:temp
         }).done(function(data){location.reload(true)});      
     });
