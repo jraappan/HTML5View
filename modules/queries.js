@@ -18,7 +18,7 @@ exports.saveNewPerson = function(req,res){
     
     var personTemp = new db.Person(req.body);
     personTemp.save(function(err,ok){
-        res.send("Dabase action done");
+        res.redirect('/');
     });
 }
 
@@ -44,5 +44,20 @@ exports.updatePerson = function(req,res){
     }
     db.Person.update({_id:req.body.id},updateData,function(err){
         res.send({data:"ok"}); // hox! return dataType json
+    });
+}
+// search person by nane or by begin letters of name
+exports.searchPerson = function(req,res){
+    var name = req.params.nimi.split("=")[1];
+    console.log("name:" + name);
+    db.Person.find({name:{'$regex':'^' + name,'$options':'i'}},function(err,data){
+        
+        if(err){
+            console.log(err.message);
+            res.send("Error in database search");
+        }
+        else{
+            res.send(data);
+        }
     });
 }

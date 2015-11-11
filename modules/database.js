@@ -9,7 +9,11 @@ function connectionStatus(err,ok){
         console.log("Connected");
     }
 }
-
+var User = mongoose.model('User',{
+    username:{type:String,unique:true},
+    password:String,
+    friends:[{type:mongoose.Schema.Types.ObjectId,ref:'Person'}]
+});
 var Person = mongoose.model('Person',{
     name:String,
     address:String,

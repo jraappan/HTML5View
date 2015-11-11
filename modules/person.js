@@ -5,6 +5,9 @@ var router = express.Router();
 router.get('/',function(req,res){
     db.getAllPersons(req,res);
 });
+router.get('/:nimi',function(req,res){
+    db.searchPerson(req,res);
+});
 router.post('/',function(req,res){
     db.saveNewPerson(req,res);
 });

@@ -6,6 +6,30 @@ window.onload = function (event) {
 */
 
 $(document).ready(function() {
+    
+    $("#search").click(function(){
+        var text = $("#search_text").val();
+        $.ajax({
+            method:"GET",
+            url:"http://localhost:3000/persons/nimi=" + text
+        }).done(function(data){
+            console.log(data);
+            $("tbody").children().remove();
+            for(i=0; i<data.length; i++){
+    
+                var html =  "<tr>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].address + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td><input type='button' id=" + data[i]._id + 
+                                " value='Modify'/></td>" +
+                        "</tr>";
+                $(html).appendTo("tbody");
+                
+            }
+        });
+    });
+    
     $("#head").css("background-color","lightblue")
         .css("padding","20px").css("border-radius","8px");
     $(".about").html("<b>New text</b>");
@@ -51,7 +75,7 @@ $(document).ready(function() {
                 }
             });              
     });
-
+ 
     
 });
 
