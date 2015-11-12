@@ -4,10 +4,12 @@ var bodyParser = require("body-parser");
 var database = require('./modules/database');
 var queries = require('./modules/queries');
 var person = require('./modules/person');
+var user =require('./modules/user');
+
 var app = express();
 
-// middlewares 
-app.use(bodyParser.urlencoded()); 
+// ************** middlewares 
+app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(function(req,res,next){
     console.log(req.method);
     console.log(req.path);
@@ -24,7 +26,10 @@ app.use('/css',express.static(path.join(__dirname, 'css')));
 app.use('/controllers',express.static(path.join(__dirname, 'controllers')));
 app.use('/lib',express.static(path.join(__dirname, 'lib')));
 app.use('/persons',person);
-// routers
+app.use('/friends',user);
+
+
+// *********** routers
 app.get("/persons",function(req,res){
     queries.getAllPersons(req,res);
 });

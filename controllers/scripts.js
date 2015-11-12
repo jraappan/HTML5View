@@ -37,12 +37,12 @@ $(document).ready(function() {
     
     var setting = {
         method:"GET",
-        url:"http://localhost:3000/persons",
+        url:"http://localhost:3000/friends/username=" + localStorage['username'],
         dataType:"json"
     };
     $.ajax(setting).done(function(data){
         console.log(data);
-        console.log(Object.keys(data[0]));
+       // console.log(Object.keys(data[0]));
         if(data.length > 0 )
         {
             var headers = Object.keys(data[0]);

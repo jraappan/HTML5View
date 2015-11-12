@@ -1,8 +1,8 @@
 /* use element selector to select  all p elements for this style */
 p{
     
-    color: greenyellow;
-    font-size: 32px;
+    color: blue;
+    font-size: 22px;
 }
 
 /* use class selector to define style for elemts*/
