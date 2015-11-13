@@ -15,7 +15,8 @@ router.post('/',function(req,res){
 router.put('/',function(req,res){
     db.updatePerson(req,res);    
 });
-router.delete('/:id',function(req,res){
+router.delete('/:id/:username',function(req,res){
+    console.log("DB delete");
     db.deletePerson(req,res);
 });
 

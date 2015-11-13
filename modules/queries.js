@@ -18,18 +18,40 @@ exports.saveNewPerson = function(req,res){
     
     var personTemp = new db.Person(req.body);
     personTemp.save(function(err,ok){
-        res.redirect('/');
+        db.Friends.update({username:req.body.user},
+                         {$push:{'friends':personTemp._id}},
+                         function(err,model){
+            
+           //res.redirect('/persons.html');
+            res.send("Person added");
+        });
+
     });
 }
 
 exports.deletePerson = function(req,res){
     var id = req.params.id.split("=")[1];
+    var user = req.params.username.split("=")[1];
+    console.log(user);
+//    user = user.split("=")[1];
+    console.log("Person id")
     console.log(id);
+    console.log("user*****");
+    console.log(user);
+
     db.Person.remove({_id:id},function(err){
         if(err){
             res.send(err.message);
         }
         else{
+            db.Friends.update({username:user},
+            {$pull:{'friends':id}},function(err,data){
+                if(err){
+                    console.log(err.message);
+                }else{
+                    console.log("Id removed from array");
+                }
+            });
             res.send("Delete ok");
         }
     });
@@ -96,7 +118,7 @@ exports.getFriendsByUsername = function(req,res){
     db.Friends.find({username:usern}).
     populate('friends').exec(function(err,data){
         console.log(err);
-        console.log(data);
-        res.send(data.friends);
+        console.log(data[0].friends);
+        res.send(data[0].friends);
     });
 }

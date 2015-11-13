@@ -16,7 +16,6 @@ app.use(function(req,res,next){
     console.log(__dirname);
     console.log(req.body);
     // console.log(database.Person);
-    database.myFunction();
     // send request forward in stack
     next();
 });

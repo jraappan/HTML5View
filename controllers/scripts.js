@@ -61,6 +61,7 @@ $(document).ready(function() {
                         "<td><input type='button' id=" + data[i]._id + 
                             " value='Modify'/></td>" +
                     "</tr>";
+
             $(html).appendTo("tbody");
             
         }
@@ -89,7 +90,7 @@ function buildModifyUI(person_data){
     $("#delete").click(function(){
        $.ajax({
            method:'DELETE',
-           url:'http://localhost:3000/persons/id=' +person_data._id
+           url:'http://localhost:3000/persons/id=' + person_data._id + '/username=' + localStorage['username']
        }).done(function(data){location.reload(true)});
     });
     
